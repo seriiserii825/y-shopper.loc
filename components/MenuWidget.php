@@ -24,27 +24,21 @@ class MenuWidget extends Widget
 		$this->tpl .= '.php';
 	}
 
-	public function run()
-	{
+	public function run(){
 		$this->data = Category::find()->indexBy('id')->asArray()->all();
 		$this->tree = $this->getTree();
-
 		vardump($this->tree);
-
 		return $this->tpl;
 	}
 
 	protected function getTree(){
 		$tree = [];
 		foreach ($this->data as $id=>&$node) {
-			if(!$node['parent_id']){
-				$tree['id'] = &$node;
-			}else{
+			if (!$node['parent_id'])
+				$tree[$id] = &$node;
+			else
 				$this->data[$node['parent_id']]['childs'][$node['id']] = &$node;
-			}
-
-			return $tree;
 		}
-
+		return $tree;
 	}
 }
