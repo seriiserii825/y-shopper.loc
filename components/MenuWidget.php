@@ -27,8 +27,8 @@ class MenuWidget extends Widget
 	public function run(){
 		$this->data = Category::find()->indexBy('id')->asArray()->all();
 		$this->tree = $this->getTree();
-		vardump($this->tree);
-		return $this->tpl;
+		$this->menuHtml = $this->getMenuHtml($this->tree);
+		return $this->menuHtml;
 	}
 
 	protected function getTree(){
@@ -40,5 +40,19 @@ class MenuWidget extends Widget
 				$this->data[$node['parent_id']]['childs'][$node['id']] = &$node;
 		}
 		return $tree;
+	}
+
+	protected function getMenuHtml($tree){
+		$str = '';
+		foreach ($tree as $category) {
+			$str .= $this->catToTemplate($category);
+		}
+		return $str;
+	}
+
+	protected function catToTemplate($category){
+		ob_start(); //используем буферизацию, чтобы не выводить код в браузер
+		include __DIR__ . '/menu_tpl/' . $this->tpl;
+		return ob_get_clean();
 	}
 }
