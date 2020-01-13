@@ -3,6 +3,7 @@
 /* @var $this yii\web\View */
 
 use yii\helpers\Html;
+
 ?>
 
 <section id="promo">
@@ -95,15 +96,18 @@ use yii\helpers\Html;
 							<?php if ($i % 3 === 0): ?>
                                 <div class="clearfix"></div>
 							<?php endif; ?>
-
 							<?php $i++; endforeach; ?>
                         <div class="clearfix"></div>
-                        <ul class="pagination">
-                            <li class="active"><a href="">1</a></li>
-                            <li><a href="">2</a></li>
-                            <li><a href="">3</a></li>
-                            <li><a href="">&raquo;</a></li>
-                        </ul>
+
+						<?php echo \yii\widgets\LinkPager::widget(['pagination' => $pages]); ?>
+
+                        <!--<ul class="pagination">-->
+                        <!--    <li class="active"><a href="">1</a></li>-->
+                        <!--    <li><a href="">2</a></li>-->
+                        <!--    <li><a href="">3</a></li>-->
+                        <!--    <li><a href="">&raquo;</a></li>-->
+                        <!--</ul>-->
+                        <!---->
 					<?php else: ?>
                         <h2>Здесь продуктов пока нету...</h2>
 					<?php endif; ?>
