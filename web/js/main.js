@@ -31,4 +31,20 @@ $(document).ready(function(){
 	$('#js-catalog').dcAccordion({
 		'speed': 300
 	});
+
+	let productsEgualHeight = function () {
+		let itemHeight = 0;
+		let productName = $('.features_items .single-products .product-name');
+
+		productName.each(function () {
+			if ($(this).height() > itemHeight) {
+				itemHeight = $(this).height();
+			}
+		});
+
+		productName.each(function () {
+			$(this).height(itemHeight);
+		});
+	};
+	productsEgualHeight();
 });

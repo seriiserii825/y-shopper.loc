@@ -2,6 +2,8 @@
 
 /* @var $this yii\web\View */
 
+use yii\helpers\Html;
+
 $this->title = 'My Yii Application';
 ?>
 <section id="slider"><!--slider-->
@@ -143,21 +145,17 @@ $this->title = 'My Yii Application';
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center">
-                                            <img src="/images/home/product1.jpg" alt=""/>
-                                            <h2>$56</h2>
-                                            <p>Easy Polo Black Edition</p>
+                                            <?php if($hit['img']): ?>
+                                                <?php echo Html::img('@web/images/products/'.$hit['img'], ['alt' => $hit['name']]); ?>
+                                            <?php else: ?>
+	                                            <?php echo Html::img('@web/images/products/no-image.png', ['alt' => $hit['name']]); ?>
+                                            <?php endif; ?>
+
+                                            <h2>$<?php echo $hit['price']; ?></h2>
+                                            <p class="product-name"><?php echo $hit['name']; ?></p>
                                             <a href="#" class="btn btn-default add-to-cart">
                                                 <i class="fa fa-shopping-cart"></i>
                                                 Add to cart</a>
-                                        </div>
-                                        <div class="product-overlay">
-                                            <div class="overlay-content">
-                                                <h2>$56</h2>
-                                                <p>Easy Polo Black Edition</p>
-                                                <a href="#" class="btn btn-default add-to-cart">
-                                                    <i class="fa fa-shopping-cart"></i>
-                                                    Add to cart</a>
-                                            </div>
                                         </div>
                                     </div>
                                     <div class="choose">
