@@ -157,6 +157,11 @@ $this->title = 'My Yii Application';
                                                 <i class="fa fa-shopping-cart"></i>
                                                 Add to cart</a>
                                         </div>
+                                        <?php if($hit['sale']): ?>
+	                                        <?php echo Html::img('@web/images/home/sale.png', ['class' => 'new','alt' => 'Распродажа']); ?>
+                                        <?php else: ?>
+	                                        <?php echo Html::img('@web/images/home/new.png', ['class' => 'new','alt' => 'Новинки']); ?>
+                                        <?php endif; ?>
                                     </div>
                                     <div class="choose">
                                         <ul class="nav nav-pills nav-justified">
