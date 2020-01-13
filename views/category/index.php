@@ -74,7 +74,6 @@ $this->title = 'My Yii Application';
                         <i class="fa fa-angle-right"></i>
                     </a>
                 </div>
-
             </div>
         </div>
     </div>
