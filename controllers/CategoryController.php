@@ -10,15 +10,17 @@ class CategoryController extends AppController
 {
 	public function actionIndex(){
 		$hits = Product::find()->asArray()->where(['hit' => '1'])->limit(6)->all();
-
+		$this->setMeta('E-SHOPPER');
 		return $this->render('index', compact('hits'));
 	}
 
 	public function  actionView($id){
 		$id = \Yii::$app->request->get('id');
 		$products = Product::find()->asArray()->where(['category_id' => $id])->all();
+		$category = Category::findOne($id);
+		$this->setMeta('E-SHOPPER | '.$category->name, $category->keywords, $category->description);
 
-		return $this->render('view', compact('products'));
+		return $this->render('view', compact('products', 'category'));
 	}
 
 }
