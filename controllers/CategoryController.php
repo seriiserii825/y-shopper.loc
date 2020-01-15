@@ -6,6 +6,8 @@ namespace app\controllers;
 use app\models\Category;
 use app\models\Product;
 use yii\data\Pagination;
+use yii\helpers\Html;
+use yii\web\Request;
 
 class CategoryController extends AppController
 {
@@ -16,7 +18,6 @@ class CategoryController extends AppController
 	}
 
 	public function  actionView($id){
-		$id = \Yii::$app->request->get('id');
 		$category = Category::findOne($id);
 
 		if ($category === null) { // item does not exist
@@ -29,6 +30,16 @@ class CategoryController extends AppController
 		$this->setMeta('E-SHOPPER | '.$category->name, $category->keywords, $category->description);
 
 		return $this->render('view', compact('products', 'pages', 'category'));
+	}
+
+	public function actionSearch(){
+		$q = Html::encode(\Yii::$app->request->get('q'));
+		$query = Product::find()->asArray()->where(['like', 'name', $q]);
+		$pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 3, 'forcePageParam' => false, 'pageSizeParam' => false]);
+		$products = $query->offset($pages->offset)->limit($pages->limit)->all();
+
+		return $this->render('search', compact('products', 'pages', 'q'));
+
 	}
 
 }
