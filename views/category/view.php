@@ -69,7 +69,11 @@ use yii\helpers\Html;
 												<?php echo Html::img('@web/images/products/no-image.png', ['alt' => $product['name']]); ?>
 											<?php endif; ?>
                                             <h2>$<?php echo $product['price']; ?></h2>
-                                            <p class="product-name"><?php echo $product['name']; ?></p>
+                                            <p class="product-name">
+                                                <a href="<?php echo \yii\helpers\Url::to(['product/view', 'id' => $product['id']]); ?>">
+													<?php echo $product['name']; ?>
+                                                </a>
+                                            </p>
                                             <a href="#" class="btn btn-default add-to-cart">
                                                 <i class="fa fa-shopping-cart"></i>
                                                 Add to cart</a>
@@ -100,14 +104,6 @@ use yii\helpers\Html;
                         <div class="clearfix"></div>
 
 						<?php echo \yii\widgets\LinkPager::widget(['pagination' => $pages]); ?>
-
-                        <!--<ul class="pagination">-->
-                        <!--    <li class="active"><a href="">1</a></li>-->
-                        <!--    <li><a href="">2</a></li>-->
-                        <!--    <li><a href="">3</a></li>-->
-                        <!--    <li><a href="">&raquo;</a></li>-->
-                        <!--</ul>-->
-                        <!---->
 					<?php else: ?>
                         <h2>Здесь продуктов пока нету...</h2>
 					<?php endif; ?>

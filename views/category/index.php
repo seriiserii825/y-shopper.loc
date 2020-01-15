@@ -3,6 +3,7 @@
 /* @var $this yii\web\View */
 
 use yii\helpers\Html;
+
 ?>
 <section id="slider"><!--slider-->
     <div class="container">
@@ -142,23 +143,27 @@ use yii\helpers\Html;
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center">
-                                            <?php if($hit['img']): ?>
-                                                <?php echo Html::img('@web/images/products/'.$hit['img'], ['alt' => $hit['name']]); ?>
-                                            <?php else: ?>
-	                                            <?php echo Html::img('@web/images/products/no-image.png', ['alt' => $hit['name']]); ?>
-                                            <?php endif; ?>
+											<?php if ($hit['img']): ?>
+												<?php echo Html::img('@web/images/products/' . $hit['img'], ['alt' => $hit['name']]); ?>
+											<?php else: ?>
+												<?php echo Html::img('@web/images/products/no-image.png', ['alt' => $hit['name']]); ?>
+											<?php endif; ?>
 
                                             <h2>$<?php echo $hit['price']; ?></h2>
-                                            <p class="product-name"><?php echo $hit['name']; ?></p>
+                                            <p class="product-name">
+                                                <a href="<?php echo \yii\helpers\Url::to(['product/view', 'id' => $hit['id']]); ?>">
+                                                    <?php echo $hit['name']; ?>
+                                                </a>
+                                            </p>
                                             <a href="#" class="btn btn-default add-to-cart">
                                                 <i class="fa fa-shopping-cart"></i>
                                                 Add to cart</a>
                                         </div>
-                                        <?php if($hit['sale']): ?>
-	                                        <?php echo Html::img('@web/images/home/sale.png', ['class' => 'new','alt' => 'Распродажа']); ?>
-                                        <?php else: ?>
-	                                        <?php echo Html::img('@web/images/home/new.png', ['class' => 'new','alt' => 'Новинки']); ?>
-                                        <?php endif; ?>
+										<?php if ($hit['sale']): ?>
+											<?php echo Html::img('@web/images/home/sale.png', ['class' => 'new', 'alt' => 'Распродажа']); ?>
+										<?php else: ?>
+											<?php echo Html::img('@web/images/home/new.png', ['class' => 'new', 'alt' => 'Новинки']); ?>
+										<?php endif; ?>
                                     </div>
                                     <div class="choose">
                                         <ul class="nav nav-pills nav-justified">
