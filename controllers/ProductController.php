@@ -13,6 +13,14 @@ class ProductController extends AppController
 		$id = Yii::$app->request->get('id');
 		$product = Product::findOne($id);
 
-		return $this->render('view', compact('product'));
+		if ($product === null) { // item does not exist
+			throw new \yii\web\HttpException(404, 'Такого товара нету');
+		}
+
+		$hits = Product::find()->asArray()->where(['hit' => '1'])->limit(6)->all();
+
+		$this->setMeta('E-SHOPPER | '.$product->name, $product->keywords, $product->description);
+
+		return $this->render('view', compact('product', 'hits'));
 	}
 }
