@@ -38,4 +38,5 @@ class Cart extends ActiveRecord
 		unset($_SESSION['cart'][$id]);
 	}
 
+
 }
