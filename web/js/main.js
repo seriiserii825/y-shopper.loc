@@ -62,6 +62,22 @@ $(document).ready(function () {
 			});
 		});
 
+		$('#js-show-cart').on('click', function (e) {
+
+			$.ajax({
+				url: '/cart/show',
+				type: 'GET',
+				success: function (res) {
+					showCart(res);
+				},
+				error: function () {
+					alert('error');
+				}
+			});
+
+			return false;
+		});
+
 		$('#js-cart .modal-body').on('click', '.del-item', function () {
 			let id = $(this).data('id');
 

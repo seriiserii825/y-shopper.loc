@@ -118,7 +118,7 @@ LtAppAssets::register($this);
                             <li><a href="checkout.html">
                                     <i class="fa fa-crosshairs"></i>
                                     Checkout</a></li>
-                            <li><a href="cart.html">
+                            <li><a id="js-show-cart" href="#">
                                     <i class="fa fa-shopping-cart"></i>
                                     Cart</a></li>
                             <li><a href="login.html">
