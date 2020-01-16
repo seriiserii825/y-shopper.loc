@@ -130,11 +130,11 @@ use yii\helpers\Html;
                             <span>
                                 <span>US $<?php echo $product->price; ?></span>
                                 <label>Quantity:</label>
-                                <input type="text" value="3"/>
-                                <button type="button" class="btn btn-fefault cart">
+                                <input type="text" value="3" id="js-product-qty" name="qty"/>
+                                <a href="#" data-id="<?php echo $product->id; ?>" type="button" class="btn add-to-cart btn-fefault cart">
                                     <i class="fa fa-shopping-cart"></i>
                                     Add to cart
-                                </button>
+                                </a>
                             </span>
                             <p><b>Availability:</b> In Stock</p>
                             <p><b>Condition:</b> New</p>

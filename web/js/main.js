@@ -104,10 +104,11 @@ $(document).ready(function () {
 			e.preventDefault();
 
 			let id = $(this).data('id');
+			let qty = $('#js-product-qty').val();
 
 			$.ajax({
 				url: '/cart/add',
-				data: {id: id},
+				data: {id: id, qty: qty},
 				type: 'GET',
 				success: function (res) {
 					showCart(res);

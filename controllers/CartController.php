@@ -13,6 +13,8 @@ class CartController extends AppController
 {
 	public function actionAdd($id){
 		$product = Product::findOne($id);
+		$qty = (int)Yii::$app->request->get('qty');
+		$qty =  !$qty ? 1 : $qty;
 
 		if(empty($product)){
 			return false;
@@ -22,7 +24,7 @@ class CartController extends AppController
 		$session->open();
 
 		$cart = new Cart();
-		$cart->addToCart($product);
+		$cart->addToCart($product, $qty);
 
 		$this->layout = false;
 		return $this->render('cart-modal', compact('session'));
