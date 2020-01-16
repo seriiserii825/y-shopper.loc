@@ -2521,5 +2521,10 @@ h2.title {
 .contact-info .social-networks ul li a:hover{
   color: #FE980F;
 }
-
+.fade.modal .btn.btn-primary {
+  margin-top: 0;
+}
+.del-item {
+  cursor: pointer;
+}
 
