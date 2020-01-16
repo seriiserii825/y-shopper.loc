@@ -16,7 +16,7 @@
         <tbody>
 		<?php foreach ($_SESSION['cart'] as $id => $item): ?>
             <tr>
-                <td><?php echo $item['img'] ?></td>
+                <td><?php echo \yii\helpers\Html::img('@web/images/products/'.$item['img'], ['alt' => $item['name'], 'height' => 50]); ?></td>
                 <td><?php echo $item['name'] ?></td>
                 <td><?php echo $item['qty'] ?></td>
                 <td><?php echo $item['price'] ?></td>
